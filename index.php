@@ -39,17 +39,22 @@
         <div class="row">
             <div class="col-12">
                 <div class="grid-calender text-center text-white">
-                    <?php 
-                    for ($e = 1; $e <= 7;$e++) {
+                    <?php
+                    for ($e = 1; $e <= 7; $e++) {
                         echo "<div class='" . strtolower($days[$e]) . " pb-4 px-1 text-truncate'>$days[$e]</div>";
                     }
                     ?>
                     <?php
                     for ($a = 0; $a <= 41; $a++) {
                         # Boucle Création des cases de jours
-                        if (($show[$a] == strftime("%e")) && ($dateActual[1] == strftime("%m")) && ($dateActual[3] == strftime("%G"))) {
+                        if ($dateAround[8] > 1 || $a > $dateInit + $dateActual[4] - 2) {
+                            echo "<div class='case-$a opacity-redured'>$show[$a]</div>";
+                            $dateAround[8]--;
+                        }
+                        elseif (($show[$a] == strftime("%e")) && ($dateActual[1] == strftime("%m")) && ($dateActual[3] == strftime("%G"))) {
                             echo "<div class='case-$a'><p class='d-inline py-2 px-3 today color-blue'>$show[$a]</p></div>";
-                        } else {
+                        } 
+                        else {
                             echo "<div class='case-$a'>$show[$a]</div>";
                         }
                     }
@@ -95,6 +100,8 @@
             </div>
         </form>
     </footer>
+
+    
     <script src="https://kit.fontawesome.com/4cfbd32d63.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>

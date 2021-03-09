@@ -34,67 +34,38 @@ $months = [
 ];
 
 $show = [
-    // Ligne 1
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-
-    // Ligne 2
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-
-    // Ligne 3
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-
-    // Ligne 4
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-
-    // Ligne 5
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-
-    // Ligne 6
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
+    // Tableau de 7 x 6
 ];
 
 $dateActual = [
+    # Jour Actuel (Type 1 à 31)
+    '',
+    # Mois Actuel (Type 01 à 12)
+    '',
+    # Mois Actuel (Type mars)
+    '',
+    # Année Actuel (Type 20XX)
+    '',
+    # Nombre de jours dans le mois
+    '',
+    # Nombre du jours en génération
+    1,
+];
+
+$dateAround = [
+    # Mois Précédant : Mois + Année + Nb Jours
     '',
     '',
+    '',
+    # Mois Suivant : Mois + Année + Nb Jours
+    '',
+    '',
+    '',
+    # Jours restant Précédants et Suivants
     '',
     '',
 ];
+
 
 $dateOffset = 0;
 
@@ -105,7 +76,7 @@ $change =  [
     # Mois + Année
     '',
     '',
-    # Chemins + Chemins
+    # Chemins URL + Chemins URL
     '',
     '',
 ];
@@ -122,27 +93,14 @@ setlocale(LC_TIME, "fr_FR");
 
 ---------------------------------------- */
 
-
 if (isset($_GET["month"])) {
-    # Mois (Type 01 à 12)
     $dateActual[1] = $_GET["month"];
-
-    # Mois (Type mars)
     $dateActual[2] = $months[$dateActual[1]];
-
-    # Année (Type 20XX)
     $dateActual[3] = $_GET["year"];
 } else {
-    # Jour (Type 1 à 31)
     $dateActual[0] = strftime("%e");
-
-    # Mois (Type 01 à 12)
     $dateActual[1] = strftime("%m");
-
-    # Mois (Type mars)
     $dateActual[2] = strftime("%B");
-
-    # Année (Type 20XX)
     $dateActual[3] = strftime("%G");
 };
 
@@ -153,16 +111,49 @@ if (isset($_GET["month"])) {
 
 ---------------------------------------- */
 
-# Nombre de jours dans le mois
-
 $dateActual[4] = cal_days_in_month(CAL_GREGORIAN, $dateActual[1], $dateActual[3]);
 
 # Jour de la semaine de 1 à 7
 $dateInit = strftime("%u", mktime(0, 0, 0, /*Mois*/ $dateActual[1], /*Jour*/ 1, /*Année*/ $dateActual[3]));
 
-for ($i = $dateInit - 1; $i < $dateActual[4] - 1 + $dateInit; $i++) {
-    $show[$i] = $i - $dateInit + 2;
+
+
+$dateAround[0] = $dateActual[1] - 1;
+$dateAround[1] = $dateActual[3];
+
+$dateAround[3] = $dateActual[1] + 1;
+$dateAround[4] = $dateActual[3];
+
+if ($dateAround[0] == 0) {
+    $dateAround[0] = 12;
+    $dateAround[1] = $dateAround[1] - 1;
 }
+
+if ($dateAround[3] == 13) {
+    $dateAround[3] = 1;
+    $dateAround[4] = $dateAround[1] + 1;
+}
+
+$dateAround[2] = cal_days_in_month(CAL_GREGORIAN, $dateAround[0], $dateAround[1]);
+$dateAround[5] = cal_days_in_month(CAL_GREGORIAN, $dateAround[3], $dateAround[4]);
+
+$dateAround[6] = $dateActual[4] - $dateInit + 2;
+$dateAround[7] = 1;
+
+for ($j = 0; $j <= 41; $j++) {
+    if ($j < $dateInit - 1) {
+        $show[$j] = $dateAround[6];
+        $dateAround[6]++;
+    } elseif ($j > $dateActual[4] + $dateInit - 2) {
+        $show[$j] = $dateAround[7];
+        $dateAround[7]++;
+    } else {
+        $show[$j] = $dateActual[5];
+        $dateActual[5]++;
+    }
+}
+
+$dateAround[8] = $dateInit;
 
 /* ----------------------------------------
 
@@ -176,12 +167,12 @@ $change[1] = $dateActual[3];
 $change[2] = $dateActual[1] + 1;
 $change[3] = $dateActual[3];
 
-if ( $change[0] == 0) {
+if ($change[0] == 0) {
     $change[0] = 12;
     $change[1] = $change[1] - 1;
 }
 
-if ( $change[2] == 13) {
+if ($change[2] == 13) {
     $change[2] = 1;
     $change[3] = $change[3] + 1;
 }
