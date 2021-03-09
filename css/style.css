@@ -1,0 +1,273 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+
+body {
+  /* background: #007bff; */
+  background: url(../img/background.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+main {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+
+a {
+  color: #FFF !important;
+}
+
+.today {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 100px;
+  font-weight: 800;
+}
+
+.color-blue {
+  color: #123BB9 !important;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Grid */
+
+.grid-title {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "date-decrease date-actual date-increase";
+}
+
+.grid-calender {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "lundi mardi mercredi jeudi vendredi samedi dimanche"
+    "case-0 case-1 case-2 case-3 case-4 case-5 case-6"
+    "case-7 case-8 case-9 case-10 case-11 case-12 case-13"
+    "case-14 case-15 case-16 case-17 case-18 case-19 case-20"
+    "case-21 case-22 case-23 case-24 case-25 case-26 case-27"
+    "case-28 case-29 case-30 case-31 case-32 case-33 case-34"
+    "case-35 case-36 case-37 case-38 case-39 case-40 case-41";
+}
+
+.lundi {
+  grid-area: lundi;
+}
+
+.mardi {
+  grid-area: mardi;
+}
+
+.mercredi {
+  grid-area: mercredi;
+}
+
+.jeudi {
+  grid-area: jeudi;
+}
+
+.vendredi {
+  grid-area: vendredi;
+}
+
+.samedi {
+  grid-area: samedi;
+}
+
+.dimanche {
+  grid-area: dimanche;
+}
+
+.case-0 {
+  grid-area: case-0;
+}
+
+.case-1 {
+  grid-area: case-1;
+}
+
+.case-2 {
+  grid-area: case-2;
+}
+
+.case-3 {
+  grid-area: case-3;
+}
+
+.case-4 {
+  grid-area: case-4;
+}
+
+.case-5 {
+  grid-area: case-5;
+}
+
+.case-6 {
+  grid-area: case-6;
+}
+
+.case-7 {
+  grid-area: case-7;
+}
+
+.case-8 {
+  grid-area: case-8;
+}
+
+.case-9 {
+  grid-area: case-9;
+}
+
+.case-10 {
+  grid-area: case-10;
+}
+
+.case-11 {
+  grid-area: case-11;
+}
+
+.case-12 {
+  grid-area: case-12;
+}
+
+.case-13 {
+  grid-area: case-13;
+}
+
+.case-14 {
+  grid-area: case-14;
+}
+
+.case-15 {
+  grid-area: case-15;
+}
+
+.case-16 {
+  grid-area: case-16;
+}
+
+.case-17 {
+  grid-area: case-17;
+}
+
+.case-18 {
+  grid-area: case-18;
+}
+
+.case-19 {
+  grid-area: case-19;
+}
+
+.case-20 {
+  grid-area: case-20;
+}
+
+.case-21 {
+  grid-area: case-21;
+}
+
+.case-22 {
+  grid-area: case-22;
+}
+
+.case-23 {
+  grid-area: case-23;
+}
+
+.case-24 {
+  grid-area: case-24;
+}
+
+.case-25 {
+  grid-area: case-25;
+}
+
+.case-26 {
+  grid-area: case-26;
+}
+
+.case-27 {
+  grid-area: case-27;
+}
+
+.case-28 {
+  grid-area: case-28;
+}
+
+.case-29 {
+  grid-area: case-29;
+}
+
+.case-30 {
+  grid-area: case-30;
+}
+
+.case-31 {
+  grid-area: case-31;
+}
+
+.case-32 {
+  grid-area: case-32;
+}
+
+.case-33 {
+  grid-area: case-33;
+}
+
+.case-34 {
+  grid-area: case-34;
+}
+
+.case-35 {
+  grid-area: case-35;
+}
+
+.case-36 {
+  grid-area: case-36;
+}
+
+.case-37 {
+  grid-area: case-37;
+}
+
+.case-38 {
+  grid-area: case-38;
+}
+
+.case-39 {
+  grid-area: case-39;
+}
+
+.case-40 {
+  grid-area: case-40;
+}
+
+.case-41 {
+  grid-area: case-41;
+}
+
+.date-actual {
+  grid-area: date-actual;
+}
+
+.date-decrease {
+  grid-area: date-decrease;
+}
+
+.date-increase {
+  grid-area: date-increase;
+}
